@@ -1,2 +1,2 @@
 # TodoList
-Todo list project
+Todo list project (in progress)
