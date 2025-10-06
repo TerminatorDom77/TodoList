@@ -6,14 +6,14 @@
     <title>Todo List App</title>
 </head>
 <body>
-    <div id="modal">
-        <div id="modal-content">
+    <div class="modal" id="project-modal">
+        <div class="modal-content">
             <h2 id="modal-caption">New Project</h2>
             <label for="project-title">Title:</label>
             <input id="project-title" type="text" />
             <label for="project-desc">Description:</label>
             <textarea id="project-desc"></textarea>
-            <div id="modal-buttons">
+            <div class="modal-buttons">
                 <button id="create-project" class="project-button">Create</button>
                 <button id="delete-project" class="project-button">Delete</button>
                 <button id="cancel-button" class="project-button">Cancel</button>
@@ -21,16 +21,32 @@
         </div>
         </div>
     </div>
+    <div class="modal" id="task-modal">
+        <div class="modal-content">
+            <h2 id="task-modal-caption">New Task</h2>
+            <label for="task-title">Title:</label>
+            <input id="task-title" type="text" />
+            <label for="task-desc">Description:</label>
+            <input id="priority" type="text" />
+            <label for="priority">Priority:</label>
+            <input id="date" type="text" />
+            <label for="date">Due Date:</label>
+            <textarea id="task-desc"></textarea>
+            <div class="modal-buttons">
+                <button id="create-task" class="project-button">Create</button>
+                <button id="delete-task" class="project-button">Delete</button>
+                <button id="cancel-task" class="project-button">Cancel</button>
+            </div>
+        </div>
+    </div>
     <div id="container">
         <div id="sidebar">
             <h1>Todo List App</h1>
             <div id="project-labels">
                 <h2>Projects</h2>
-                <div id="project-button">+</div>
+                <div class="add-button" id="project-button">+</div>
             </div>
-            <div id="project-container">
-                <div class="project">Default Project</div> 
-            </div>
+            <div id="project-container"></div>
         </div>
         <div id="main-content">
             <div id="selected-project">
@@ -46,8 +62,11 @@
                         <h3>Description</h3>
                         <div id="description"></div>
                     </div>
-                    <div id="task-contianer">
-                        <h3>Tasks</h3>
+                    <div id="task-container">
+                        <div id="task-label">
+                            <h2>Tasks</h2>
+                            <div class="add-button" id="task-button">+</div>
+                        </div>
                         <div id="tasks"></div>
                     </div>
                 </div>

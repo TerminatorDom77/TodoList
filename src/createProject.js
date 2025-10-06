@@ -1,8 +1,8 @@
-import Project from './projectFactory';
-import displayProject from './displayProject.js';
+import Project from './projectFactory.js';
+import {displayProject, initCurrentProject} from './displayProject.js';
+import createTask from './createTask.js';
 
 let projects = [];
-projects.push(Project("Default Project", "", []));
 let projectBeingEdited = null;
 
 const createProjectModal = function(){
@@ -12,11 +12,25 @@ const createProjectModal = function(){
     let deleteButton = document.getElementById("delete-project");
     let cancelButton = document.getElementById("cancel-button");
     let editButton = document.querySelector("img");
-    let modal = document.getElementById("modal");
+    let modal = document.getElementById("project-modal");
+    let taskModal = document.getElementById("task-modal");
+    taskModal.style.display = "none";
     let modalCaption = document.getElementById("modal-caption");
     let titleInput = document.getElementById("project-title");
     let descriptionInput= document.getElementById("project-desc");
     modal.style.display = "none";
+
+    //Creating default project below
+    let newProjectBtn = document.createElement("div");
+    newProjectBtn.classList.add("project"); 
+    newProjectBtn.textContent = "Default Project";
+    projectContainer.appendChild(newProjectBtn);
+    let newProject = Project("Default Project", "");
+    projects.push(Project("Default Project", "", []));
+    newProjectBtn.addEventListener("click", () => {
+        displayProject(newProject);
+    });
+    initCurrentProject();
 
     projectButton.addEventListener("click", () => {
         createButton.textContent = "Create";
@@ -82,6 +96,7 @@ const createProjectModal = function(){
             }
         });
     });
+    createTask();
 }
 
 export {createProjectModal, projects};
