@@ -1,4 +1,3 @@
-import Project from './projectFactory.js';
 import Task from './taskFactory.js';
 import {currentProject} from './displayProject.js';
 
@@ -18,11 +17,11 @@ const createTask = function(){
         let description = document.getElementById("task-desc").value;
         let priority = document.getElementById("priority").value;
         let dueDate = document.getElementById("date").value;
-        let project = currentProject;
         if (createButton.textContent == "Create"){
             let task = Task(title, description, priority, dueDate);
-            console.log(project);
-            project.todos.push(task);
+            console.log(currentProject);
+            currentProject.todos.push(task);
+
             let tasksSection = document.getElementById("tasks");
             let taskContainer = document.createElement("div");
             taskContainer.textContent = "Task";
@@ -30,12 +29,15 @@ const createTask = function(){
             let taskDescription = document.createElement("div");
             let taskPriority = document.createElement("div");
             let taskDate = document.createElement("div");
+
             taskTitle.textContent = title;
             taskDescription.textContent = description;
             taskPriority.textContent = task.priority;
             taskDate.textContent = task.dueDate;
-            taskContainer.append(taskTitle, taskDescription, taskPriority, taskDate);
-            tasksSection.appendChild(taskContainer);
+            if (document.getElementById("title").textContent == currentProject.title){
+                taskContainer.append(taskTitle, taskDescription, taskPriority, taskDate);
+                tasksSection.appendChild(taskContainer);
+            }
             modal.style.display = "none";
         }
     });
