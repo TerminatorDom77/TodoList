@@ -1,6 +1,6 @@
 import Project from './projectFactory.js';
 import {displayProject, initCurrentProject} from './displayProject.js';
-import createTask from './createTask.js';
+import {createTask} from './createTask.js';
 
 let projects = [];
 let projectBeingEdited = null;
